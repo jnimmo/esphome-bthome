@@ -729,7 +729,7 @@ void BTHome::nimble_on_sync_() {
 
   // Build and start advertising
   instance_->build_advertisement_data_();
-  instance_->build_scan_response_data_();  
+  instance_->build_scan_response_data_();
   instance_->start_advertising_();
 }
 
