@@ -729,19 +729,7 @@ void BTHome::nimble_on_sync_() {
 
   // Build and start advertising
   instance_->build_advertisement_data_();
-  instance_->build_scan_response_data_();
-
-  // Retry loop - NimBLE may not be fully ready immediately after sync
-  for (int attempt = 0; attempt < 10; attempt++) {
-    int adv_rc = ble_gap_adv_set_data(instance_->adv_data_, instance_->adv_data_len_);
-    if (adv_rc == 0) {
-      ESP_LOGD(TAG, "adv_set_data succeeded on attempt %d", attempt + 1);
-      break;
-    }
-    ESP_LOGW(TAG, "adv_set_data attempt %d failed: %d, retrying...", attempt + 1, adv_rc);
-    vTaskDelay(pdMS_TO_TICKS(200));
-  }
-  
+  instance_->build_scan_response_data_();  
   instance_->start_advertising_();
 }
 
