@@ -128,10 +128,12 @@ void BTHome::setup() {
   
   // Set nimble initialized to true before staring host task 
   this->nimble_initialized_ = true;
+  ESP_LOGD(TAG, "NimBLE flag set...");
 
   ESP_LOGD(TAG, "NimBLE initialized, waiting for sync...");
   
   // Start NimBLE host task
+  ESP_LOGD(TAG, "Starting NimBLE host task...");
   nimble_port_freertos_init(nimble_host_task_);
 
   #else
